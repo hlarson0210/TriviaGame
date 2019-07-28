@@ -1,0 +1,20 @@
+body {
+    background-image: url("https://cdn2.unrealengine.com/Fortnite%2Flanding-pages%2Fseason-8-v2%2Fheader%2F08BR_UA_Landing-Page_BP-Launch_Keyart_Home-1920x1080-7d810184e17fc1c2d35397c00dde4ff8ae0140b9.jpg");
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+.container {
+    background-image: url("https://i.ytimg.com/vi/8yy0cdS1Bb8/maxresdefault.jpg");
+    height: 750px;
+    width: 1200px;
+    z-index: 2;
+    opacity: .5;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    padding: 50px;
+}
