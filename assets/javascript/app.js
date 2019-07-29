@@ -8,53 +8,103 @@ var unansweredQs = [];
 // var for question array with object:
 var questions = [
     {
-        question1: "Question 1: How many modes does the game have?",
-        //options include: 7, 2, 1, 4
+        question: "Question 1: How many modes does the game have?",
+        options:{
+            a: 7,
+            b: 2,
+            c: 1,
+            d: 4
+        },
         answer: "2"
     },
     {
-        2: "Question 2: When was the game created?",
-        //options include: March 1, 2016; June 30, 2017; July 25, 2017; July 20, 2016;
+        question: "Question 2: When was the game created?",
+        options:{
+            a: "March 1, 2016",
+            b: "June 30, 2017",
+            c: "July 25, 2017",
+            d: "July 20, 2016"
+        },
         answer: "July 25, 2017"
     },
     {
-        3: "Question 3: Who developed the game?",
-        //options include: Epic Games, Nintendo, EA Sports, Disney
+        question: "Question 3: Who developed the game?",
+        options:{
+            a: "Epic Games", 
+            b: "Nintendo", 
+            c: "EA Sports", 
+            d: "Disney"
+        },
         answer: "Epic Games"
     },
     {
-        4: "Question 4: How many players participate in Fortnite battle royale?",
-        //options include: 10, 100, 50, however many you want
+        question: "Question 4: How many players participate in Fortnite battle royale?",
+        options: {
+            a: 10,
+            b: 100,
+            c: 50,
+            d: "However many you want"
+        },
         answer: "100"
     },
     {
-        5: "Question 5: In-game purchase in Fornite battle royale are called?",
-        //options include: Purchases, Battle Pass, Royale Pass, Battle Royale Pass
+        question: "Question 5: In-game purchase in Fornite battle royale are called?",
+        options: {
+            a: "Purchases",
+            b: "Battle Pass", 
+            c: "Royale Pass",
+            d: "Battle Royale Pass"
+        },
         answer: "Battle Pass"
     },
     {
-        6: "Question 6: What is the maximum health you can have?",
-        //options include: 50, 100, 150, 200
+        question: "Question 6: What is the maximum health you can have?",
+        options:{
+            a: 50,
+            b: 100,
+            c: 150,
+            d: 200
+        },
         answer: "100"
     },
     {
-        7: "Question 7: What is the first weapon you are given in battle royale?",
-        //options include: Pistol, Glider, Pick Axe, None
+        question: "Question 7: What is the first weapon you are given in battle royale?",
+        options:{
+            a: "Pistol",
+            b: "Glider",
+            c: "Pick Axe",
+            d: "None"
+        },
         answer: "Pick Axe"
     },
     {
-        8: "Question 8: The name of the hot air balloon is?",
-        //options include: Battle Bus, Battle Balloon, Battle Shuttle, Battle Ship
+        question: "Question 8: The name of the hot air balloon is?",
+        options:{
+            a: "Battle Bus",
+            b: "Battle Balloon",
+            c: "Battle Shuttle",
+            d: "Battle Ship"
+        },
         answer: "Battle Bus"
     },
     {
-        9: "Question 9: The shrinking map in battle royale is called?",
-        //options include: Poison, Storm, Hurricane, Death
+        question: "Question 9: The shrinking map in battle royale is called?",
+        options:{
+            a: "Poison",
+            b: "Storm",
+            c: "Hurricane",
+            d: "Death"
+        }, 
         answer: "Storm"
     },
     {
-        10: "Question 10: Which one of these is not a level of weapon?",
-        //options include: Rare, Epic, Normal, Legendary
+        question: "Question 10: Which one of these is not a level of weapon?",
+        options:{
+            a: "Rare",
+            b: "Epic",
+            c: "Normal",
+            d: "Legendary"
+        },
         answer: "Normal"
     }
 ]
@@ -62,7 +112,12 @@ var questions = [
 // Create onClick command to start the game / timer / and question cycle.
 //$(document).ready(){
     for (var i = 0; i <questions.length; i++){
-        console.log(questions[i]);
+        // console.log(questions[i]);
+        console.log(questions[i].question);
+        console.log(questions[i].options.a);
+        console.log(questions[i].options.b);
+        console.log(questions[i].options.c);
+        console.log(questions[i].options.d);
         console.log(questions[i].answer);
     }
 
