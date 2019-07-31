@@ -3,6 +3,7 @@ var correctAnswer;
 var correctQs = 0;
 var wrongQs = 0;
 var unansweredQs = 0;
+var time = 30;
 
 
 // var for question array with object:
@@ -117,55 +118,74 @@ $(".start").click(function () {
 
 
     // timer starts for each question / 30 seconds per page
-    setTimeout(function () {
 
 
 
 
-        for (var i = 0; i < questions.length; i++) {
 
-            $("#ask").append("<div>" + questions[i].question + "</div>");
+    for (var i = 0; i < questions.length; i++) {
 
-            for (var j = 0; j < questions[i].options.length; j++) {
-                var radioButton = $('<input type="radio"/>');
-                radioButton.attr("name", 'rbtncount' + i);
-                radioButton.attr("value", questions[i].options[j]);
-                radioButton.html("<span>" + questions[i].options[j] + "</span>");
-                var label = $("<label>")
-                label.text(questions[i].options[j])
+        $("#ask").append("<br><div>" + questions[i].question + "</div>");
 
-                // radioButton.append(nameDiv);
+        for (var j = 0; j < questions[i].options.length; j++) {
+            var radioButton = $('<input type="radio"/>');
+            radioButton.attr("name", 'rbtncount' + i);
+            radioButton.attr("value", questions[i].options[j]);
+            radioButton.html("<span>" + questions[i].options[j] + "</span>");
+            var label = $("<label>");
+            label.text(questions[i].options[j]);
 
-                // radioButton.appendTo(
-                // $("#ask").append("<input type='radio' name='rbtncount'"+ i + ">" + questions[i].options[j] + "</div>");
-                $("#ask").append(radioButton, label, "<br>");
-                // console.log(questions[i].options[j]);
-            }
+            // radioButton.append(nameDiv);
+
+            // radioButton.appendTo(
+            // $("#ask").append("<input type='radio' name='rbtncount'"+ i + ">" + questions[i].options[j] + "</div>");
+            $("#ask").append(radioButton, label, "<br>");
+            // console.log(questions[i].options[j]);
         }
+    }
 
-        $("input").on("click", function () {
-            console.log(this.value)
-        })
+    $("input").on("click", function () {
+        console.log(this.value)
+    })
+    var submit = $("<button>");
+    submit.html("Submit");
+    console.log(submit);
 
-    }, 30000);
+    setTimeout(countDown, 1000);
+
+    function countDown() {
+        time--;
+        if (time > 0) {
+            setTimeout(countDown, 1000);
+            $(".timer").html("Time remaining: " + time);
+        } else (time === 0)
+        //fuction to display results
+
+        console.log(time);
+    }
+
+
+
+
 
     // onSubmit event to capture user's choice
     // Match with the answer in the array object to determine if answered correctly or not
     // If correct, push to correctQs array
-    if (userChoice === questions[i].answer) {
-        correctQs++;
-        //display correctQs / of questions.length 'correct'
 
-        // If wrong, push to wrongQs array
-    } else if (userChoice !== questions[i].answer) {
-        wrongQs++
-        //display wrongQs / of questions.length 'wrong'
+    // if (userChoice === questions[i].answer) {
+    //     correctQs++;
+    //display correctQs / of questions.length 'correct'
 
-        // if unanswered, push to unansweredQs
-    } else {
-        unansweredQs++
-        //display unansweredQs / of questions.length 'unanswered'
-    }
+    // If wrong, push to wrongQs array
+    // } else if (userChoice !== questions[i].answer) {
+    //     wrongQs++
+    //display wrongQs / of questions.length 'wrong'
+
+    // if unanswered, push to unansweredQs
+    // } else {
+    //     unansweredQs++
+    //display unansweredQs / of questions.length 'unanswered'
+    // }
 
     // Display recap page:
     // This will show how many Qs the user got correct, wrong, unanswered

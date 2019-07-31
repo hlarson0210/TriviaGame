@@ -23,3 +23,11 @@ p {
     top: 65%;
     left: 42%;
 }
+
+.timer {
+    align-content: center;
+    color: white;
+    height: 50px;
+    width: 350px;
+    font-size: 30pt;
+}
