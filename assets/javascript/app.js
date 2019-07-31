@@ -147,8 +147,8 @@ $(".start").click(function () {
     $("input").on("click", function () {
         console.log(this.value)
     })
-    var submit = $("<button>");
-    submit.html("Submit");
+    var submit = $(".submit");
+    submit.append("<br><button>Submit</button>");
     console.log(submit);
 
     setTimeout(countDown, 1000);
