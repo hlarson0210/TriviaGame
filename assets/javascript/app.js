@@ -1,8 +1,8 @@
 var userChoice;
 var correctAnswer;
-var correctQs = [];
-var wrongQs = [];
-var unansweredQs = [];
+var correctQs = 0;
+var wrongQs = 0;
+var unansweredQs = 0;
 
 
 // var for question array with object:
@@ -10,181 +10,165 @@ var questions = [
     {
         question: "Question 1: How many modes does the game have?",
         options: [
-            "a: 7",
-            "b: 2",
-            "c: 1",
-            "d: 4"
+            "7",
+            "2",
+            "1",
+            "4"
         ],
-        answer: "b: 2"
+        answer: "2"
     },
     {
         question: "Question 2: When was the game created?",
         options: [
-            "a: March 1, 2016",
-            "b: June 30, 2017",
-            "c: July 25, 2017",
-            "d: July 20, 2016"
+            "March 1, 2016",
+            "June 30, 2017",
+            "July 25, 2017",
+            "July 20, 2016"
         ],
-        answer: "c: July 25, 2017"
+        answer: "July 25, 2017"
     },
     {
         question: "Question 3: Who developed the game?",
         options: [
-            "a: Epic Games",
-            "b: Nintendo",
-            "c: EA Sports",
-            "d: Disney"
+            "Epic Games",
+            "Nintendo",
+            "EA Sports",
+            "Disney"
         ],
-        answer: "a: Epic Games"
+        answer: "Epic Games"
     },
     {
         question: "Question 4: How many players participate in Fortnite battle royale?",
         options: [
-            "a: 10",
-            "b: 100",
-            "c: 50",
-            "d: However many you want"
+            "10",
+            "100",
+            "50",
+            "However many you want"
         ],
-        answer: "b: 100"
+        answer: "100"
     },
     {
         question: "Question 5: In-game purchase in Fornite battle royale are called?",
         options: [
-            "a: Purchases",
-            "b: Battle Pass",
-            "c: Royale Pass",
-            "d: Battle Royale Pass"
+            "Purchases",
+            "Battle Pass",
+            "Royale Pass",
+            "Battle Royale Pass"
         ],
-        answer: "b: Battle Pass"
+        answer: "Battle Pass"
     },
     {
         question: "Question 6: What is the maximum health you can have?",
         options: [
-            "a: 50",
-            "b: 100",
-            "c: 150",
-            "d: 200"
+            "50",
+            "100",
+            "150",
+            "200"
         ],
-        answer: "b: 100"
+        answer: "100"
     },
     {
         question: "Question 7: What is the first weapon you are given in battle royale?",
         options: [
-            "a: Pistol",
-            "b: Glider",
-            "c: Pick Axe",
-            "d: None"
+            "Pistol",
+            "Glider",
+            "Pick Axe",
+            "None"
         ],
-        answer: "c: Pick Axe"
+        answer: "Pick Axe"
     },
     {
         question: "Question 8: What is the name of the hot air balloon?",
         options: [
-            "a: Battle Bus",
-            "b: Battle Balloon",
-            "c: Battle Shuttle",
-            "d: Battle Ship"
+            "Battle Bus",
+            "Battle Balloon",
+            "Battle Shuttle",
+            "Battle Ship"
         ],
-        answer: "a: Battle Bus"
+        answer: "Battle Bus"
     },
     {
         question: "Question 9: The shrinking map in battle royale is called?",
         options: [
-            "a: Poison",
-            "b: Storm",
-            "c: Hurricane",
-            "d: Death"
+            "Poison",
+            "Storm",
+            "Hurricane",
+            "Death"
         ],
-        answer: "b: Storm"
+        answer: "Storm"
     },
     {
         question: "Question 10: Which one of these is not a level of weapon?",
         options: [
-            "a: Rare",
-            "b: Epic",
-            "c: Normal",
-            "d: Legendary"
+            "Rare",
+            "Epic",
+            "Normal",
+            "Legendary"
         ],
-        answer: "c: Normal"
+        answer: "Normal"
     }
 ]
 
+
 // Create onClick command to start the game / timer / and question cycle.
-var startGame = function () {
-    // instructions / starting page display ""
-    $(".container").append("");
-    // for loop
-    for (var i = 0; i < questions.length; i++) {
-        // console.log(questions[i].question);
-        // console.log(questions[i].options.a);
-        // console.log(questions[i].options.b);
-        // console.log(questions[i].options.c);
-        // console.log(questions[i].options.d);
-        // console.log(questions[i].answer);
-
-        // timer starts for each question / 10 seconds per question
-        setTimeout(function () {
-            // Display 1 question at a time until all are asked
-            $("#ask").append("<div>" + questions[i].question + "</div>");
-            $("#option1").append("<button>" + questions[i].options.a + "</button>");
-            $("#option2").append("<button>" + questions[i].options.b + "</button>");
-            $("#option3").append("<button>" + questions[i].options.c + "</button>");
-            $("#option4").append("<button>" + questions[i].options.d + "</button>");
-
-        }, 10000);
-        // Display answer screen for 3 seconds to reveal if user's choice was correct or not
-
-
-
-        // answers get pushed to array
-
-    };
-
-    // answers displayed on final page
-
-}
-// console.log(startGame());
-
-// Display question 1 with choices displayed
-
-// onClick event to capture user's choice
-
-// Match with the answer in the array object to determine if answered correctly or not
-// If correct, push to correctQs array
-// If wrong, push to wrongQs array
-// if unanswered, push to unansweredQs
-
-// Display answer screen for 3 seconds to reveal if user's choice was correct or not
-
-// Repeat for the 10 questions (for loop)
-
-// Display recap page:
-// This will show how many Qs the user got correct, wrong, unanswered
-
-
 $(".start").click(function () {
     $(".container").html("<div>");
     $(".start").remove();
 
-    for (var i = 0; i < questions.length; i++) {
 
-        $("#ask").append("<div>" + questions[i].question + "</div>");
+    // timer starts for each question / 30 seconds per page
+    setTimeout(function () {
 
-        for (var j = 0; j < questions[i].options.length; j++) {
-        var radioButton = $('<input type="radio"/>');
-        radioButton.attr( 'name=rbtncount' + i);
-        var nameDiv = $("<div>")
-        nameDiv.text(questions[i].options[j]);
-        
-        radioButton.append(nameDiv);
 
-        radioButton.appendTo($("#ask").append("<div input='radio' name='rbtncount'"+ i + ">" + questions[i].options[j] + "</div>"));
-        console.log(questions[i].options[j]);
+
+
+        for (var i = 0; i < questions.length; i++) {
+
+            $("#ask").append("<div>" + questions[i].question + "</div>");
+
+            for (var j = 0; j < questions[i].options.length; j++) {
+                var radioButton = $('<input type="radio"/>');
+                radioButton.attr("name", 'rbtncount' + i);
+                radioButton.attr("value", questions[i].options[j]);
+                radioButton.html("<span>" + questions[i].options[j] + "</span>");
+                var label = $("<label>")
+                label.text(questions[i].options[j])
+
+                // radioButton.append(nameDiv);
+
+                // radioButton.appendTo(
+                // $("#ask").append("<input type='radio' name='rbtncount'"+ i + ">" + questions[i].options[j] + "</div>");
+                $("#ask").append(radioButton, label, "<br>");
+                // console.log(questions[i].options[j]);
+            }
         }
+
+        $("input").on("click", function () {
+            console.log(this.value)
+        })
+
+    }, 30000);
+
+    // onSubmit event to capture user's choice
+    // Match with the answer in the array object to determine if answered correctly or not
+    // If correct, push to correctQs array
+    if (userChoice === questions[i].answer) {
+        correctQs++;
+        //display correctQs / of questions.length 'correct'
+
+        // If wrong, push to wrongQs array
+    } else if (userChoice !== questions[i].answer) {
+        wrongQs++
+        //display wrongQs / of questions.length 'wrong'
+
+        // if unanswered, push to unansweredQs
+    } else {
+        unansweredQs++
+        //display unansweredQs / of questions.length 'unanswered'
     }
-    // startGame();
-    // var hello = "hello!";
-    // alert(hello);
+
+    // Display recap page:
+    // This will show how many Qs the user got correct, wrong, unanswered
 });
 
 
