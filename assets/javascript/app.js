@@ -147,9 +147,36 @@ $(".start").click(function () {
     $("input").on("click", function () {
         console.log(this.value)
     })
+
     var submit = $(".submit");
     submit.append("<br><button>Submit</button>");
-    console.log(submit);
+
+    $(".submit").click(function () {
+        countDown = false;
+        
+        // onSubmit event to capture user's choice
+        // Match with the answer in the array object to determine if answered correctly or not
+        // If correct, push to correctQs array
+
+        // if (userChoice === questions[i].answer) {
+        //     correctQs++;
+        //display correctQs / of questions.length 'correct'
+
+        // If wrong, push to wrongQs array
+        // } else if (userChoice !== questions[i].answer) {
+        //     wrongQs++
+        //display wrongQs / of questions.length 'wrong'
+
+        // if unanswered, push to unansweredQs
+        // } else {
+        //     unansweredQs++
+        //display unansweredQs / of questions.length 'unanswered'
+        // }
+
+        // Display recap page:
+        // This will show how many Qs the user got correct, wrong, unanswered
+
+    })
 
     setTimeout(countDown, 1000);
 
@@ -159,36 +186,12 @@ $(".start").click(function () {
             setTimeout(countDown, 1000);
             $(".timer").html("Time remaining: " + time);
         } else (time === 0)
-        //fuction to display results
+        // submitQs();
 
         console.log(time);
     }
 
 
-
-
-
-    // onSubmit event to capture user's choice
-    // Match with the answer in the array object to determine if answered correctly or not
-    // If correct, push to correctQs array
-
-    // if (userChoice === questions[i].answer) {
-    //     correctQs++;
-    //display correctQs / of questions.length 'correct'
-
-    // If wrong, push to wrongQs array
-    // } else if (userChoice !== questions[i].answer) {
-    //     wrongQs++
-    //display wrongQs / of questions.length 'wrong'
-
-    // if unanswered, push to unansweredQs
-    // } else {
-    //     unansweredQs++
-    //display unansweredQs / of questions.length 'unanswered'
-    // }
-
-    // Display recap page:
-    // This will show how many Qs the user got correct, wrong, unanswered
 });
 
 
