@@ -19,7 +19,7 @@ p {
     color: black; 
     /* needs to be white */
     align-content: center;
-    position: relative;
-    top: 300px;
-    left: 625px;
+    position: absolute;
+    top: 65%;
+    left: 42%;
 }
