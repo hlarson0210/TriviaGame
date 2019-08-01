@@ -184,6 +184,8 @@ $(".start").click(function () {
         //display correctQs / of questions.length 'correct'
         //display wrongQs / of questions.length 'wrong'
         // display unansweredQs / of questions.length 'unanswered'
+        var alertMessage = "You got "+correctQs+ " correct!" + " " + "You got "+wrongQs+" wrong!" + " " + "You didn't answer "+unansweredQs+" questions";
+        alert(alertMessage);
     })
 
     setTimeout(countDown, 1000);
