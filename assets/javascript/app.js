@@ -1,4 +1,4 @@
-var userChoice;
+var userChoice = [];
 var correctAnswer;
 var correctQs = 0;
 var wrongQs = 0;
@@ -118,11 +118,6 @@ $(".start").click(function () {
 
 
     // timer starts for each question / 30 seconds per page
-
-
-
-
-
     for (var i = 0; i < questions.length; i++) {
 
         $("#ask").append("<br><div>" + questions[i].question + "</div>");
@@ -135,17 +130,25 @@ $(".start").click(function () {
             var label = $("<label>");
             label.text(questions[i].options[j]);
 
-            // radioButton.append(nameDiv);
 
-            // radioButton.appendTo(
-            // $("#ask").append("<input type='radio' name='rbtncount'"+ i + ">" + questions[i].options[j] + "</div>");
             $("#ask").append(radioButton, label, "<br>");
-            // console.log(questions[i].options[j]);
         }
     }
 
     $("input").on("click", function () {
         console.log(this.value)
+        //this is where you add the if statement to only push the value of the button clicked to the userChoice array once per 'rbtncount'+[i]
+        // var object = {};
+        // for (var i = 0; i < questions.length; i++)
+        // var selection = userChoice[i];
+            // if (object[selection]) {
+            //     return selection;
+            // } else {
+            //     object[selection] = true;
+            // }
+            // console.log(object);
+        userChoice.push(this.value);
+        console.log(userChoice);
     })
 
     var submit = $(".submit");
@@ -153,29 +156,34 @@ $(".start").click(function () {
 
     $(".submit").click(function () {
         countDown = false;
-        
+
         // onSubmit event to capture user's choice
+        console.log(userChoice);
+
         // Match with the answer in the array object to determine if answered correctly or not
         // If correct, push to correctQs array
-
-        // if (userChoice === questions[i].answer) {
-        //     correctQs++;
-        //display correctQs / of questions.length 'correct'
-
-        // If wrong, push to wrongQs array
-        // } else if (userChoice !== questions[i].answer) {
-        //     wrongQs++
-        //display wrongQs / of questions.length 'wrong'
-
-        // if unanswered, push to unansweredQs
-        // } else {
-        //     unansweredQs++
-        //display unansweredQs / of questions.length 'unanswered'
-        // }
-
+        for (var i = 0; i < userChoice.length; i++) {
+            if (userChoice[i] === questions[i].answer) {
+                correctQs++;
+                console.log(correctQs);
+                console.log(questions[i].answer);
+            }
+            // If wrong, push to wrongQs array
+            else if (userChoice !== questions[i].answer) {
+                wrongQs++
+                console.log(wrongQs);
+            }
+            // if unanswered, push to unansweredQs
+            else {
+                unansweredQs++
+                console.log(unansweredQs);
+            }
+        }
         // Display recap page:
         // This will show how many Qs the user got correct, wrong, unanswered
-
+        //display correctQs / of questions.length 'correct'
+        //display wrongQs / of questions.length 'wrong'
+        // display unansweredQs / of questions.length 'unanswered'
     })
 
     setTimeout(countDown, 1000);
