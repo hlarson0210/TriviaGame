@@ -115,6 +115,7 @@ var questions = [
 $(".start").click(function () {
     $(".container").html("<div>");
     $(".start").remove();
+    $(".timer").html("Time remaining: " + time);
 
 
     // timer starts for each question / 30 seconds per page
@@ -194,7 +195,7 @@ $(".start").click(function () {
     function countDown() {
         time--;
         if (time > 0) {
-            setTimeout(countDown, 100);
+            setTimeout(countDown, 1000);
             $(".timer").html("Time remaining: " + time);
         } else {
             countDown = false;
@@ -247,4 +248,3 @@ $(".start").click(function () {
 //3. once you answer the question the answer is shown and the screen moves you along to the next questions (no refresh)
 //4. timer resets with new question and repeat step 3 until all questions are answered or timer is up
 //5. once user answers all the questions, recap how many Q's they got correct / wrong / unanswered & display "restart" button
-
