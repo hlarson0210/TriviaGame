@@ -6,7 +6,6 @@ var unansweredQs = 0;
 var time = 30;
 
 
-// var for question array with object:
 var questions = [
     {
         question: "Question 1: How many modes does the game have?",
@@ -111,14 +110,13 @@ var questions = [
 ]
 
 
-// Create onClick command to start the game / timer / and question cycle.
 $(".start").click(function () {
     $(".container").html("<div>");
     $(".start").remove();
+    $(".time").attr("class", "timer fixed-top");
     $(".timer").html("Time remaining: " + time);
+    $(".bod").attr("class", "body");
 
-
-    // timer starts for each question / 30 seconds per page
     for (var i = 0; i < questions.length; i++) {
 
         $("#ask").append("<br><div>" + questions[i].question + "</div>");
@@ -127,6 +125,7 @@ $(".start").click(function () {
             var radioButton = $('<input type="radio"/>');
             radioButton.attr("name", 'rbtncount' + i);
             radioButton.attr("value", questions[i].options[j]);
+            radioButton.attr("class", "radioButton");
             radioButton.html("<span>" + questions[i].options[j] + "</span>");
             var label = $("<label>");
             label.text(questions[i].options[j]);
@@ -137,7 +136,9 @@ $(".start").click(function () {
     }
 
     $("input").on("click", function () {
-        console.log(this.value)
+        console.log(this.value);
+        console.log(this.name);
+
         //this is where you add the if statement to only push the value of the button clicked to the userChoice array once per 'rbtncount'+[i]
         // var object = {};
         // for (var i = 0; i < questions.length; i++)
@@ -148,44 +149,35 @@ $(".start").click(function () {
         //     object[selection] = true;
         // }
         // console.log(object);
+
+
         userChoice.push(this.value);
         console.log(userChoice);
     })
 
     var submit = $(".submit");
-    submit.append("<br><button>Submit</button>");
+    submit.append("<br><button class='btn-lg btn-block'>Submit</button>");
 
 
     $(".submit").click(function () {
         countDown = false;
 
-        // onSubmit event to capture user's choice
+
+        var score = document.querySelector('input[value]:checked');
+        console.log(score);
         console.log(userChoice);
 
-        // Match with the answer in the array object to determine if answered correctly or not
-        // If correct, push to correctQs array
         for (var i = 0; i < userChoice.length; i++) {
             if (userChoice[i] === questions[i].answer) {
                 correctQs++;
-                console.log(correctQs);
-                console.log(questions[i].answer);
             }
-            // If wrong, push to wrongQs array
             else if (userChoice !== questions[i].answer) {
                 wrongQs++
-                console.log(wrongQs);
             }
-            // if unanswered, push to unansweredQs
             else {
                 unansweredQs++
-                console.log(unansweredQs);
             }
         }
-        // Display recap page:
-        // This will show how many Qs the user got correct, wrong, unanswered
-        //display correctQs / of questions.length 'correct'
-        //display wrongQs / of questions.length 'wrong'
-        // display unansweredQs / of questions.length 'unanswered'
         var alertMessage = "You got " + correctQs + " correct!" + " " + "You got " + wrongQs + " wrong!" + " " + "You didn't answer " + unansweredQs + " questions";
         alert(alertMessage);
     })
@@ -200,43 +192,23 @@ $(".start").click(function () {
         } else {
             countDown = false;
 
-            // onSubmit event to capture user's choice
             console.log(userChoice);
 
-            // Match with the answer in the array object to determine if answered correctly or not
-            // If correct, push to correctQs array
             for (var i = 0; i < userChoice.length; i++) {
                 if (userChoice[i] === questions[i].answer) {
                     correctQs++;
-                    console.log(correctQs);
-                    console.log(questions[i].answer);
                 }
-                // If wrong, push to wrongQs array
                 else if (userChoice !== questions[i].answer) {
                     wrongQs++
-                    console.log(wrongQs);
                 }
-                // if unanswered, push to unansweredQs
                 else {
                     unansweredQs++
-                    console.log(unansweredQs);
                 }
             }
-            // Display recap page:
-            // This will show how many Qs the user got correct, wrong, unanswered
-            //display correctQs / of questions.length 'correct'
-            //display wrongQs / of questions.length 'wrong'
-            // display unansweredQs / of questions.length 'unanswered'
             var alertMessage = "You got " + correctQs + " correct!" + " " + "You got " + wrongQs + " wrong!" + " " + "You didn't answer " + unansweredQs + " questions";
             alert(alertMessage);
-
         }
-        // submitQs();
-
-        console.log(time);
     }
-
-
 });
 
 
