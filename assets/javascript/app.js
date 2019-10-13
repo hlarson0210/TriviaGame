@@ -171,12 +171,9 @@ $(".start").click(function () {
             else if (userChoice !== questions[i].answer) {
                 wrongQs++
             }
-            else {
-                unansweredQs++
-            }
         }
 
-        var alertMessage = "You got " + correctQs + " correct!" + "\n\nYou got " + wrongQs + " wrong!" + "\n\nYou didn't answer " + unansweredQs + " questions";
+        var alertMessage = "You got " + correctQs + " correct!" + "\n\nYou got " + wrongQs + " wrong!";
         alert(alertMessage);
     }
 
