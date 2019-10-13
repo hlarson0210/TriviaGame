@@ -1,5 +1,4 @@
-var userChoice = [];
-var correctAnswer;
+
 var correctQs = 0;
 var wrongQs = 0;
 var unansweredQs = 0;
@@ -118,7 +117,7 @@ $(".start").click(function () {
     $(".bod").attr("class", "body");
 
     for (var i = 0; i < questions.length; i++) {
-
+        console.log(questions[i].pick);
         $("#ask").append("<br><div>" + questions[i].question + "</div>");
 
         for (var j = 0; j < questions[i].options.length; j++) {
@@ -135,38 +134,36 @@ $(".start").click(function () {
         }
     }
 
-    $("input").on("click", function () {
-        console.log(this.value);
-        console.log(this.name);
-
-        //this is where you add the if statement to only push the value of the button clicked to the userChoice array once per 'rbtncount'+[i]
-        // var object = {};
-        // for (var i = 0; i < questions.length; i++)
-        // var selection = userChoice[i];
-        // if (object[selection]) {
-        //     return selection;
-        // } else {
-        //     object[selection] = true;
-        // }
-        // console.log(object);
-
-
-        userChoice.push(this.value);
-        console.log(userChoice);
-    })
-
     var submit = $(".submit");
     submit.append("<br><button class='btn-lg btn-block'>Submit</button>");
 
 
+    $("input").on("click", function () {
+        console.log(this.value);
+        console.log(this.name);
+    })
+
     $(".submit").click(function () {
+        checkScores();
+    });
+
+    function checkScores() {
         countDown = false;
 
+        // One way to address this is 'if (selection[i].name === rbtncount[i]) {userChoice[i].name.push(selection[i].value)}
+        var userChoice = [];
+        var selection = $("[class=radioButton]");
+        for (var i = 0; i < selection.length; i++) {
+            if (selection[i].checked) {
+                var selValue = selection[i].value
 
-        var score = document.querySelector('input[value]:checked');
-        console.log(score);
+                userChoice.push(selValue);
+            }
+        };
+
+
         console.log(userChoice);
-
+        
         for (var i = 0; i < userChoice.length; i++) {
             if (userChoice[i] === questions[i].answer) {
                 correctQs++;
@@ -178,9 +175,10 @@ $(".start").click(function () {
                 unansweredQs++
             }
         }
-        var alertMessage = "You got " + correctQs + " correct!" + " " + "You got " + wrongQs + " wrong!" + " " + "You didn't answer " + unansweredQs + " questions";
+
+        var alertMessage = "You got " + correctQs + " correct!" + "\n\nYou got " + wrongQs + " wrong!" + "\n\nYou didn't answer " + unansweredQs + " questions";
         alert(alertMessage);
-    })
+    }
 
     setTimeout(countDown, 1000);
 
@@ -190,28 +188,19 @@ $(".start").click(function () {
             setTimeout(countDown, 1000);
             $(".timer").html("Time remaining: " + time);
         } else {
-            countDown = false;
-
-            console.log(userChoice);
-
-            for (var i = 0; i < userChoice.length; i++) {
-                if (userChoice[i] === questions[i].answer) {
-                    correctQs++;
-                }
-                else if (userChoice !== questions[i].answer) {
-                    wrongQs++
-                }
-                else {
-                    unansweredQs++
-                }
-            }
-            var alertMessage = "You got " + correctQs + " correct!" + " " + "You got " + wrongQs + " wrong!" + " " + "You didn't answer " + unansweredQs + " questions";
-            alert(alertMessage);
+            $(".timer").html("Time remaining: 0");
+            checkScores();
         }
     }
 });
 
+function startGame() {
 
+}
+
+function pressA2Start() {
+
+}
 
 
 //Pseudo Code:
